@@ -46,5 +46,26 @@ flutter build web
 
 Katalog `.tools/` jest ignorowany: zawiera lokalne kopie narzędzi użyte podczas przygotowania projektu w ograniczonym środowisku. Nie jest potrzebny przy standardowej instalacji Flutter.
 
+## Publikacja na GitHub Pages
+
+Workflow `.github/workflows/deploy-pages.yml` analizuje projekt, uruchamia testy,
+buduje Flutter Web w trybie release i publikuje wynik po każdym pushu na `main`.
+Można go też uruchomić ręcznie w zakładce Actions przez `Run workflow`.
+Używa Fluttera 3.44.2 oraz zależności z `pubspec.lock`.
+
+Jednorazowo w repozytorium ustaw **Settings → Pages → Build and deployment →
+Source → GitHub Actions**. Następnie uruchom workflow, jeśli wcześniejszy deploy
+nie powiódł się z powodu wyłączonych Pages.
+
+Adres gry: https://krzylesniewski.github.io/f1_game_track_shape/
+
+Ścieżka bazowa jest pobierana z konfiguracji Pages, dzięki czemu pliki aplikacji
+działają pod adresem repozytorium, a także po skonfigurowaniu własnej domeny.
+Lokalnie odpowiedni build można sprawdzić poleceniem:
+
+```sh
+flutter build web --release --base-href "/f1_game_track_shape/"
+```
+
 
 
